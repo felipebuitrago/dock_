@@ -3,3 +3,6 @@
 
 postgres/
 pgAdmin/
+
+#.env de pokeapp
+mongo-compose/.env
