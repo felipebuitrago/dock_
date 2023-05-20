@@ -1,8 +1,11 @@
 
 #directorios binding volumes
 
-postgres/
-pgAdmin/
+PgPgadminCompose/postgres/
+PgPgadminCompose/pgAdmin/
 
 #.env de pokeapp
 mongo-compose/.env
+
+#VScode
+DOCKER.code-workspace
