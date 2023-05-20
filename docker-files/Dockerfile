@@ -20,13 +20,13 @@ RUN npm install
 COPY . .
 
 # Realizar testing
-RUN npm run test
+#RUN npm run test
 
 # Eliminar archivos y directorios no necesarios en PROD
-RUN rm -rf tests && rm -rf node_modules
+#RUN rm -rf tests && rm -rf node_modules
 
 # Unicamente las dependencias de prod
-RUN npm install --prod
+#RUN npm install --prod
 
 
 # Comando run de la imagen

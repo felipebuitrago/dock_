@@ -7,5 +7,9 @@ PgPgadminCompose/pgAdmin/
 #.env de pokeapp
 mongo-compose/.env
 
+#node modules on dockerfile assigment
+docker-files/node_modules/
+docker-files/package-lock.json
+
 #VScode
 DOCKER.code-workspace
