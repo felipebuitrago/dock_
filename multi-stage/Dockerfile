@@ -1,44 +1,30 @@
 #MULTI-STAGE BUILDS
 
-#Stage 1
+#Stage 1 - Dependencias de desarrollo
 FROM node:19.2-alpine3.16 as deps 
-
-# cd app
 WORKDIR  /app
-
-# Dest /app
 COPY package.json ./
-
-# Instalar las dependencias
 RUN npm install
 
-#Stage-2
+#Stage 2 - Build y Tests
 FROM node_modules:19.2-alpine3.16 as builder
-
 WORKDIR /app
-
 COPY --from=deps /app/node_modules ./node_modules
-
 COPY . . 
-
 RUN npm run test
 
 
-
-
-
-# Dest /app
-COPY . .
-
-# Realizar testing
-RUN npm run test
-
-# Eliminar archivos y directorios no necesarios en PROD
-RUN rm -rf tests && rm -rf node_modules
-
-# Unicamente las dependencias de prod
+#Stage 3 - Dependencias de Producción
+FROM node_modules:19.2-alpine3.16 as prod-deps
+WORKDIR /app
+COPY package.json ./
 RUN npm install --prod
 
 
-# Comando run de la imagen
+#Ejecutar la APP
+FROM node_modules:19.2-alpine3.16 as runner
+WORKDIR /app
+COPY --from=prod-deps /app/node_modules ./node_modules
+COPY app.js ./
+COPY tasks/ ./tasks
 CMD [ "node", "app.js" ]
