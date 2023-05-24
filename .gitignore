@@ -11,5 +11,9 @@ mongo-compose/.env
 docker-files/node_modules/
 docker-files/package-lock.json
 
+#node modules on multi-stage assigment
+multi-stage/node_modules/
+multi-stage/package-lock.json
+
 #VScode
 DOCKER.code-workspace
