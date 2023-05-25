@@ -15,5 +15,8 @@ docker-files/package-lock.json
 multi-stage/node_modules/
 multi-stage/package-lock.json
 
+compose-build/.yarn/
+compose-build/.env
+
 #VScode
 DOCKER.code-workspace
