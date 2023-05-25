@@ -3,7 +3,7 @@ FROM node:19-alpine3.15 as dev
 WORKDIR /app
 COPY package.json ./
 RUN yarn install
-#CMD [ "yarn","start:dev" ]
+CMD [ "yarn","start:dev" ]
 
 
 FROM node:19-alpine3.15 as dev-deps
